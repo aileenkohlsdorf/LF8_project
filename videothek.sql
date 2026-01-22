@@ -14,11 +14,16 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Dumping database structure for videothek
+CREATE DATABASE IF NOT EXISTS `videothek` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_uca1400_ai_ci */;
+USE `videothek`;
+
 -- Dumping structure for table videothek.ausleihe
 CREATE TABLE IF NOT EXISTS `ausleihe` (
   `Ausleihe_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Ausleihdatum` date DEFAULT curdate(),
   `Rückgabedatum` date DEFAULT NULL,
-  `Ausleihdatum` date DEFAULT NULL,
   `Kunde_ID` int(11) DEFAULT NULL,
   `Film_ID` int(11) DEFAULT NULL,
   `Mitarbeiter_ID` int(11) DEFAULT NULL,
@@ -28,22 +33,23 @@ CREATE TABLE IF NOT EXISTS `ausleihe` (
   KEY `Mitarbeiter_ID` (`Mitarbeiter_ID`),
   CONSTRAINT `Film_ID` FOREIGN KEY (`Film_ID`) REFERENCES `film` (`Film_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Kunde_ID` FOREIGN KEY (`Kunde_ID`) REFERENCES `kunde` (`Kunde_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Mitarbeiter_ID` FOREIGN KEY (`Mitarbeiter_ID`) REFERENCES `mitarbeiter` (`Mitarbeiter_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Mitarbeiter_ID` FOREIGN KEY (`Mitarbeiter_ID`) REFERENCES `mitarbeiter` (`Mitarbeiter_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Rückgabe_größer_Ausleihe` CHECK (`Rückgabedatum` > `Ausleihdatum`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 -- Dumping data for table videothek.ausleihe: ~10 rows (approximately)
 DELETE FROM `ausleihe`;
-INSERT INTO `ausleihe` (`Ausleihe_ID`, `Rückgabedatum`, `Ausleihdatum`, `Kunde_ID`, `Film_ID`, `Mitarbeiter_ID`) VALUES
-	(1, '2025-01-10', '2025-01-03', NULL, NULL, NULL),
-	(2, '2025-01-12', '2025-01-05', NULL, NULL, NULL),
-	(3, '2025-01-15', '2025-01-08', NULL, NULL, NULL),
-	(4, '2025-01-18', '2025-01-11', NULL, NULL, NULL),
-	(5, '2025-01-20', '2025-01-13', NULL, NULL, NULL),
-	(6, '2025-01-22', '2025-01-15', NULL, NULL, NULL),
-	(7, '2025-01-25', '2025-01-18', NULL, NULL, NULL),
-	(8, '2025-01-27', '2025-01-20', NULL, NULL, NULL),
-	(9, '2025-01-30', NULL, NULL, NULL, NULL),
-	(10, '2025-02-02', NULL, NULL, NULL, NULL);
+INSERT INTO `ausleihe` (`Ausleihe_ID`, `Ausleihdatum`, `Rückgabedatum`, `Kunde_ID`, `Film_ID`, `Mitarbeiter_ID`) VALUES
+	(1, '2025-01-03', '2025-01-10', 1, 6, 9),
+	(2, '2025-01-05', '2025-01-12', 7, 18, 1),
+	(3, '2025-01-08', '2025-01-15', 8, 11, 4),
+	(4, '2025-01-11', '2025-01-18', 13, 6, 3),
+	(5, '2025-01-13', '2025-01-20', 11, 14, 7),
+	(6, '2025-01-15', '2025-01-22', 9, 19, 2),
+	(7, '2025-01-18', '2025-01-25', 1, 8, 6),
+	(8, '2025-01-20', '2025-01-27', 3, 16, 5),
+	(9, '2023-01-22', NULL, 5, 17, 8),
+	(10, '2025-01-18', NULL, 10, 15, 10);
 
 -- Dumping structure for table videothek.film
 CREATE TABLE IF NOT EXISTS `film` (
@@ -91,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `kunde` (
   KEY `Index 1` (`Kunde_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
--- Dumping data for table videothek.kunde: ~0 rows (approximately)
+-- Dumping data for table videothek.kunde: ~15 rows (approximately)
 DELETE FROM `kunde`;
 INSERT INTO `kunde` (`Kunde_ID`, `Vorname`, `Nachname`, `Geburtstag`, `Straße_Nr`, `PLZ`, `City`) VALUES
 	(1, 'Sir-Lacht-viel', 'Wackelknie', '1985-04-12', 'Bananenallee 7', '12345', 'Quatschstadt'),
