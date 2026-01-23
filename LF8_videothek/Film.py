@@ -7,6 +7,6 @@ class Film(BaseModel):
 
     Film_ID: int
     Titel: str
-    Erscheinungsjahr: date
+    Erscheinungsjahr: int
     Genre: str
     Alterfreigabe: str
