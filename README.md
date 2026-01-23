@@ -73,3 +73,9 @@ Die Daten werden in einer relationalen Datenbank gespeichert.
   "mitarbeiterId": 2,
   "ausleihdatum": "2026-01-16"
 }
+```
+
+### Requirements / Dependencies
+pydantic (py -m pip install pydantic)
+mariadb  (py -m pip install mariadb)
+dotenv   (py -m pip install python-dotenv)
