@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-try:
+def db_connect():
     conn = mariadb.connect(
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
@@ -14,12 +14,14 @@ try:
         database="videothek"
 
     )
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM film")
+    for row in cur:
+        print(row)
+
+"""
 except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     sys.exit(1)
-
-cur = conn.cursor()
-
-cur.execute("SELECT * FROM film")
-for row in cur:
-    print(row)
+"""
