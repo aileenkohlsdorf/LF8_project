@@ -76,6 +76,9 @@ Die Daten werden in einer relationalen Datenbank gespeichert.
 ```
 
 ### Requirements / Dependencies
-pydantic (py -m pip install pydantic)
-mariadb  (py -m pip install mariadb)
-dotenv   (py -m pip install python-dotenv)
+- pydantic (py -m pip install pydantic)
+- mariadb  (py -m pip install mariadb)
+- dotenv   (py -m pip install python-dotenv)
+
+### Startup
+- py -m fastapi dev API.py
