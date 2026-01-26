@@ -11,5 +11,3 @@ class Ausleihe(BaseModel):
     Kunde_ID: int
     Film_ID: int
     Mitarbeiter_ID: int
-
-print(Ausleihe(Ausleihe_ID = 1, Ausleihdatum = '2026-02-02', Rückgabedatum = '2026-02-03', Kunde_ID = 2, Film_ID = 2, Mitarbeiter_ID = 3).model_dump())
