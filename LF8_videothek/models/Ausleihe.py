@@ -1,3 +1,5 @@
+from typing import Union
+
 from pydantic import BaseModel
 from datetime import date
 from dataclasses import dataclass
@@ -7,10 +9,7 @@ class Ausleihe(BaseModel):
 
     Ausleihe_ID: int
     Ausleihdatum: date
-    Rückgabedatum: date
-    Kunde_ID: int
+    Rückgabedatum: Union[date, None] ## kann bspw. beim Post auch noch nicht zurückgegeben worden sein
+    Kunde_ID: str
     Film_ID: int
-    Mitarbeiter_ID: int
-
-## was just for testing
-## print(Ausleihe(Ausleihe_ID = 1, Ausleihdatum = '2026-02-02', Rückgabedatum = '2026-02-03', Kunde_ID = 2, Film_ID = 2, Mitarbeiter_ID = 3).model_dump())
+    Mitarbeiter_ID: Union[str, None] ## es kann auch kein Mitarbeiter beraten haben
