@@ -35,13 +35,13 @@ def create_ausleihe(ausleihe: Ausleihe):
         return {"message": "Ausleihe created"}
 
 @router.put("/{ausleihe_id}")
-def change_film(ausleihe_id: int, ausleihe: Ausleihe):
+def change_film(ausleihe: Ausleihe):
     conn = get_connection()
     cur = conn.cursor()
     try:
         cur.execute(
             "UPDATE Ausleihe SET Ausleihdatum = %s, Rückgabedatum = %s, Kunde_ID = %s, Film_ID = %s, Mitarbeiter_ID = %s Where Ausleihe_ID = %s",
-            (ausleihe.Ausleihdatum, ausleihe.Rückgabedatum, ausleihe.Kunde_ID, ausleihe.Film_ID, ausleihe.Mitarbeiter_ID, ausleihe_id)
+            (ausleihe.Ausleihdatum, ausleihe.Rückgabedatum, ausleihe.Kunde_ID, ausleihe.Film_ID, ausleihe.Mitarbeiter_ID, ausleihe.Ausleihe_ID)
         )
         conn.commit()
     except IntegrityError:

@@ -42,12 +42,12 @@ def create_film(film: Film):
     return {"message": "Film created"}
 
 @router.put("/{film_id}")
-def change_film(film_id: int, film: Film):
+def change_film(film: Film):
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
         "UPDATE film SET Titel = %s, Erscheinungsjahr = %s, Genre = %s, Altersfreigabe = %s Where Film_ID = %s",
-        (film.Titel, film.Erscheinungsjahr, film.Genre, film.Altersfreigabe, film_id)
+        (film.Titel, film.Erscheinungsjahr, film.Genre, film.Altersfreigabe, film.Film_ID)
     )
     conn.commit()
     conn.close()

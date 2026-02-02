@@ -19,9 +19,33 @@ def create_mitarbeiter(mitarbeiter: Mitarbeiter):
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
-        "INSERT INTO mitarbeiter (Vorname, Nachname) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO mitarbeiter (Vorname, Nachname) VALUES (?, ?)",
         (mitarbeiter.Vorname, mitarbeiter.Nachname)
     )
     conn.commit()
     conn.close()
     return {"message": "Mitarbeiter created"}
+
+@router.put("/{mitarbeiter_id}")
+def change_film(mitarbeiter_id: int, mitarbeiter: Mitarbeiter):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        "UPDATE Mitarbeiter SET Vorname = %s, Nachname = %s Where Mitarbeiter_ID = %s",
+        (mitarbeiter.Vorname, mitarbeiter.Nachname, mitarbeiter_id)
+    )
+    conn.commit()
+    conn.close()
+    return {"message": "Mitarbeiter updated"}
+
+@router.delete("/{mitarbeiter_id}")
+def delete_film(mitarbeiter_id: int):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        "DELETE FROM Mitarbeiter WHERE Mitarbeiter_ID = %s",
+        (mitarbeiter_id,)
+    )
+    conn.commit()
+    conn.close()
+    return {"message": "Mitarbeiter deleted"}
