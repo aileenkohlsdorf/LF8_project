@@ -15,6 +15,9 @@ Die Daten werden in einer relationalen Datenbank gespeichert.
 
 ## Datenmodell
 
+<img width="821" height="799" alt="Videothek_V2 drawio" src="https://github.com/user-attachments/assets/e9fa23a4-dd14-4e2c-b1bb-15a82f3bb4b4" />
+
+
 ### Entitäten
 
 #### Film
