@@ -2,15 +2,15 @@ from fastapi import APIRouter
 from db import get_connection
 from models.Film import Film
 
-router = APIRouter(prefix="/films", tags=["Films"])  ##für die URL .../films/
+router = APIRouter(prefix="/films", tags=["Films"])  #für die URL .../films/
 
 @router.get("/")
 def get_films():
-    conn = get_connection() ## Verbindung zu Datenbank
+    conn = get_connection() # Verbindung zu Datenbank
     cur = conn.cursor()
     cur.execute("SELECT * FROM film")
     rows = cur.fetchall()
-    columns = [col[0] for col in cur.description] ## col[0] = Spaltenname - wird in den Schlüssel für das json Key-Value-Paar aufgelöst
+    columns = [col[0] for col in cur.description] # col[0] = Spaltenname - wird in den Schlüssel für das json Key-Value-Paar aufgelöst
     conn.close()
     return [dict(zip(columns, row)) for row in rows]
 
