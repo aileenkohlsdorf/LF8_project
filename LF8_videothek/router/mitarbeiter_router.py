@@ -31,7 +31,7 @@ def change_film(mitarbeiter_id: int, mitarbeiter: Mitarbeiter):
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
-        "UPDATE Mitarbeiter SET Vorname = %s, Nachname = %s Where Mitarbeiter_ID = %s",
+        "UPDATE mitarbeiter SET Vorname = %s, Nachname = %s Where Mitarbeiter_ID = %s",
         (mitarbeiter.Vorname, mitarbeiter.Nachname, mitarbeiter_id)
     )
     conn.commit()
@@ -43,7 +43,7 @@ def delete_film(mitarbeiter_id: int):
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
-        "DELETE FROM Mitarbeiter WHERE Mitarbeiter_ID = %s",
+        "DELETE FROM mitarbeiter WHERE Mitarbeiter_ID = %s",
         (mitarbeiter_id,)
     )
     conn.commit()
