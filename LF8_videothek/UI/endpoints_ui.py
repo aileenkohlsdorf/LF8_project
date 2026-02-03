@@ -29,14 +29,34 @@ def setup_pages():
                 mitarbeiter = response.json()
                 mitarbeiter_table.rows = mitarbeiter
 
+        ui.add_css(
+            """
+            body.body--dark .app-drawer {
+                background-color: #4c4141 !important;
+            }
+            body:not(.body--dark) .app-drawer {
+                background-color: #FFDBDB !important;
+            }
+            """
+            """
+                .custom-toggle .q-toggle__inner--falsy .q-toggle__track {
+                    background-color: gray;
+                }
+                .custom-toggle .q-toggle__inner--falsy .q-toggle__thumb::after {
+                    background-color: salmon;
+                }
+                
+            """
+        )
+
         ui.label("Ich geh springen hihi")
 
         with ui.header(elevated=True).style('background-color: #d60808').classes('items-center justify-between'):
             ui.label('VIDEOTHEK')
             dark = ui.dark_mode()
-            ui.switch('Dark mode').bind_value(dark)
+            ui.switch('Dark mode').bind_value(dark).classes('custom-toggle')
 
-        with ui.left_drawer().style('background-color: #FFDBDB').props('width=200 breakpoint=500'):
+        with ui.left_drawer().classes('app-drawer').props('width=200 breakpoint=500'):
             with ui.tabs().props('vertical switch-indicator swipeable').classes('w-full') as tabs:
                 ui.tab('Filme')
                 ui.tab('Ausleihen')
