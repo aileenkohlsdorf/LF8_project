@@ -1,0 +1,18 @@
+- git repo angelegt
+- Idee überlegt
+- ERM mit draw.io erstellt
+- Datenbank angelegt und Tabellen Film, Kunde, Ausleihe und Mitarbeiter angelegt
+- Java-Spring-Projekt angelegt (via spring-initializr)
+- umentschieden auf python
+- Datenbank-Connection (zw. db und backend) aufgebaut
+- Klassen für Entities mit pydantic angelegt
+- Router angelegt
+- Anzeige mit swagger-ui umgesetzt
+- UI-Überarbeitung mit NiceGUI
+- NAS aufgesetzt -> Remote-Zugriff auf Datenbank
+
+
+Probleme/Ausblick
+- Projekt extern hosten (damit man nicht lokal alles herunterladen muss) -> rudimentär bereits implementiert
+- zwei verschiedene Frontends, eins für User und eins für Admins
+- optisch anzeigen wenn Filme ausgeliehen und damit nicht verfügbar sind
