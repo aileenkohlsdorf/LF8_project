@@ -1,3 +1,5 @@
+Dokumentation Projekt Videothek
+
 - git repo angelegt
 - Idee überlegt
 - ERM mit draw.io erstellt
@@ -16,3 +18,5 @@ Probleme/Ausblick
 - Projekt extern hosten (damit man nicht lokal alles herunterladen muss) -> rudimentär bereits implementiert
 - zwei verschiedene Frontends, eins für User und eins für Admins
 - optisch anzeigen wenn Filme ausgeliehen und damit nicht verfügbar sind
+- mehr Datentypen von Filmen in der Datenbank
+- Cover von Filmen anzeigen
