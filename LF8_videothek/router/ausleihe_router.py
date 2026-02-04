@@ -40,7 +40,7 @@ def change_film(ausleihe: Ausleihe):
     cur = conn.cursor()
     try:
         cur.execute(
-            "UPDATE Ausleihe SET Ausleihdatum = %s, Rückgabedatum = %s, Kunde_ID = %s, Film_ID = %s, Mitarbeiter_ID = %s Where Ausleihe_ID = %s",
+            "UPDATE Ausleihe SET ausleihdatum = %s, Rückgabedatum = %s, Kunde_ID = %s, Film_ID = %s, Mitarbeiter_ID = %s Where Ausleihe_ID = %s",
             (ausleihe.Ausleihdatum, ausleihe.Rückgabedatum, ausleihe.Kunde_ID, ausleihe.Film_ID, ausleihe.Mitarbeiter_ID, ausleihe.Ausleihe_ID)
         )
         conn.commit()
@@ -56,7 +56,7 @@ def delete_film(ausleihe_id: int):
     conn = get_connection()
     cur = conn.cursor()
     cur.execute(
-        "DELETE FROM Ausleihe WHERE AUsleihe_ID = %s",
+        "DELETE FROM ausleihe WHERE AUsleihe_ID = %s",
         (ausleihe_id,)
     )
     conn.commit()

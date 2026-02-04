@@ -10,6 +10,6 @@ class Ausleihe(BaseModel):
     Ausleihe_ID: int
     Ausleihdatum: date
     Rückgabedatum: Union[date, None] # kann bspw. beim Post auch noch nicht zurückgegeben worden sein
-    Kunde_ID: str
+    Kunde_ID: int
     Film_ID: int
-    Mitarbeiter_ID: Union[str, None] # es kann auch kein Mitarbeiter beraten haben
+    Mitarbeiter_ID: Union[int, None] # es kann auch kein Mitarbeiter beraten haben
