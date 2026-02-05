@@ -4,6 +4,6 @@ from dataclasses import dataclass
 @dataclass # like lombok
 class Mitarbeiter(BaseModel):
 
-    Mitarbeiter_ID: int
-    Vorname: str
-    Nachname: str
+    __Mitarbeiter_ID__: int
+    __Vorname__: str
+    __Nachname__: str

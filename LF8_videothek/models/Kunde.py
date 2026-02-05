@@ -5,10 +5,10 @@ from dataclasses import dataclass
 @dataclass # like lombok
 class Kunde(BaseModel):
 
-    Kunde_ID: int
-    Vorname: str
-    Nachname: str
-    Geburtstag: date
-    Straße_Nr: str
-    PLZ: str
-    City: str
+    __Kunde_ID__: int
+    __Vorname__: str
+    __Nachname__: str
+    __Geburtstag__: date
+    __Straße_Nr__: str
+    __PLZ__: str
+    __City__: str
