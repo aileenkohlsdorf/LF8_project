@@ -15,7 +15,13 @@ Die Daten werden in einer relationalen Datenbank gespeichert.
 
 ## Datenmodell
 
+### Entity Relationship Modell
+
 <img width="821" height="799" alt="Videothek_V2 drawio" src="https://github.com/user-attachments/assets/e9fa23a4-dd14-4e2c-b1bb-15a82f3bb4b4" />
+
+### Information Flow
+
+<img width="438" height="508" alt="Infromationflow drawio" src="https://github.com/user-attachments/assets/6dc9a3b4-04bc-4f19-be04-18acb10f9712" />
 
 
 ### Entitäten
